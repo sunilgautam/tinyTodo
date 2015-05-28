@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var respond = require('../helpers/responder.js');
 
 var mongoose = require('mongoose');
 var Todo = require('../models/Todo.js');
@@ -22,25 +23,37 @@ router.post('/', function(req, res, next) {
 
 // show
 router.get('/:id', function(req, res, next) {
-  Todo.findById(req.params.id, function (err, post) {
+  Todo.findById(req.params.id, function (err, todo) {
     if (err) return next(err);
-    res.json(post);
+    if (todo) {
+      res.json(todo);
+    } else {
+      return respond.notFound(next);
+    }
   });
 });
 
 // update
 router.put('/:id', function(req, res, next) {
-  Todo.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+  Todo.findByIdAndUpdate(req.params.id, req.body, function (err, todo) {
     if (err) return next(err);
-    res.json(post);
+    if (todo) {
+      res.json(todo);
+    } else {
+      return respond.notFound(next);
+    }
   });
 });
 
 // delete
 router.delete('/:id', function(req, res, next) {
-  Todo.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+  Todo.findByIdAndRemove(req.params.id, req.body, function (err, todo) {
     if (err) return next(err);
-    res.json(post);
+    if (todo) {
+      res.json(todo);
+    } else {
+      return respond.notFound(next);
+    }
   });
 });
 

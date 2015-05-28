@@ -10,11 +10,11 @@ var todos = require('./routes/todos');
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/tinyTodo', function(err) {
-    if(err) {
-        console.log('connection error', err);
-    } else {
-        console.log('connection successful');
-    }
+  if(err) {
+    console.log('connection error', err);
+  } else {
+    console.log('connection successful');
+  }
 });
 
 var app = express();
@@ -48,9 +48,12 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
+    res.json({
+      error: {
+        message: err.message,
+        status_code: err.status,
+        stack: err.stack
+      }
     });
   });
 }
@@ -59,9 +62,11 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
+  res.json({
+    error: {
+      message: err.message,
+      status_code: err.status
+    }
   });
 });
 
