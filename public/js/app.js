@@ -1,15 +1,31 @@
-var ngApp = angular.module('tinyTodo', []);
+var ngApp = angular.module('tinyTodo', ['ngResource']);
 
-ngApp.controller('TodoController', function($scope) {
-    $scope.todos = [{title: 'First entry'}];
+ngApp.factory('Todo', ['$resource', function($resource) {
+    return $resource('todos');
+}]);
+
+ngApp.controller('TodoController', ['$scope', 'Todo', function($scope, Todo) {
+    $scope.todos = [];
+
+    Todo.query(function(results) {
+        $scope.todos = results;
+    });
 
     $scope.addTodo = function(form) {
         if (form && form.$valid) {
-            $scope.todos.push({ title: $scope.title });
-            $scope.title = '';
 
-            form.$setPristine();
-            form.$setUntouched();
+            var todo = new Todo();
+            todo.title = $scope.title;
+            todo.note = '';
+            todo.completed = false;
+
+            todo.$save(function(result) {
+                $scope.todos.push(result);
+                $scope.title = '';
+
+                form.$setPristine();
+                form.$setUntouched();
+            });
         }
     };
-});
+}]);

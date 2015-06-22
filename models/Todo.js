@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var TodoSchema = new mongoose.Schema({
-  name: String,
+  title: String,
   completed: Boolean,
   note: String,
   updated_at: { type: Date, default: Date.now },

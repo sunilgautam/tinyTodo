@@ -9,8 +9,9 @@ module.exports = function(grunt) {
           // bower js files
           {expand: true, flatten: true, src: ['bower_components/jquery/dist/*'], dest: 'public/js/libs/jquery/', filter: 'isFile'},
           {expand: true, flatten: true, src: ['bower_components/bootstrap/dist/js/*'], dest: 'public/js/libs/bootstrap/', filter: 'isFile'},
-          {expand: true, flatten: true, src: ['bower_components/angular/*.js'], dest: 'public/js/libs/angular/', filter: 'isFile'},
-          {expand: true, flatten: true, src: ['bower_components/angular/*.js.*'], dest: 'public/js/libs/angular/', filter: 'isFile'},
+          {expand: true, flatten: true, src: ['bower_components/angular/*'], dest: 'public/js/libs/angular/', filter: 'isFile'},
+          {expand: true, flatten: true, src: ['bower_components/angular-resource/*'], dest: 'public/js/libs/angular-resource/', filter: 'isFile'},
+          {expand: true, flatten: true, src: ['bower_components/angular-route/*'], dest: 'public/js/libs/angular-route/', filter: 'isFile'},
 
           // bower css files
           {expand: true, flatten: true, src: ['bower_components/bootstrap/dist/css/*'], dest: 'public/css/bootstrap/', filter: 'isFile'},

@@ -2,6 +2,14 @@
     color: #e74c3c;
 }
 
+.glyphicon {
+    font-size: 20px;
+}
+
+.todo-item {
+    font-size: 22px;
+}
+
 .ng-submitted .ng-invalid {
     border-color: #e74c3c;
 }
