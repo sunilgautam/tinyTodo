@@ -35,6 +35,7 @@ router.get('/:id', function(req, res, next) {
 
 // update
 router.put('/:id', function(req, res, next) {
+  delete req.body._id;
   Todo.findByIdAndUpdate(req.params.id, req.body, function (err, todo) {
     if (err) return next(err);
     if (todo) {

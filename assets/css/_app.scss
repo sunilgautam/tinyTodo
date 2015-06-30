@@ -1,0 +1,107 @@
+a {
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.error {
+    color: #e74c3c;
+}
+
+.glyphicon {
+    font-size: 20px;
+}
+
+.ng-submitted .ng-invalid {
+    border-color: #e74c3c;
+}
+
+/*.ng-pristine {
+    border-color: #e74c3c;
+}
+.ng-invalid.ng-dirty {
+    border-color: #e74c3c;
+}
+.ng-valid.ng-dirty {
+    border-color: #2ecc71;
+}*/
+
+$gray-light: #969BA2;
+$gray-mid: #696B72;
+$gray-dark: #787B82;
+
+.todo-list {
+    font-size: 22px;
+    color: $gray-dark;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    .todo-item {
+        position: relative;
+
+        &:hover {
+            background-color: lighten($gray-dark, 49%);
+
+            .cross {
+                display: block;
+            }
+        }
+    }
+
+    .completed {
+        text-decoration: line-through;
+    }
+
+    input[type="checkbox"] {
+        text-align: center;
+        width: 26px;
+        /* auto, since non-WebKit browsers doesn't support input styling */
+        height: auto;
+        /*position: absolute;
+        top: 0;
+        bottom: 0;*/
+        margin: auto 0;
+        border: none; /* Mobile Safari */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
+        color: $gray-light;
+
+        outline: none;
+    }
+
+    input[type="checkbox"]:hover {
+        color: $gray-mid;
+    }
+
+    input[type="checkbox"]:after {
+        font-family: 'Metrize-Icons';
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        content: "\e0f6";
+    }
+
+    input[type="checkbox"]:checked:after {
+        content: "\e0e2";
+        color: $gray-dark;
+    }
+
+    .cross {
+        position: absolute;
+        right: 10px;
+        top: 2px;
+        display: none;
+        color: #FFCDD2;
+
+        &:hover {
+            color: #EF5350;
+        }
+    }
+}

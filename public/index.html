@@ -19,10 +19,13 @@
                         <div ng-show="todoForm.title.$error.required" class="error">Enter title</div>
                     </div> -->
                 </form>
-                <ul>
-                    <li ng-repeat="todo in todos" class="todo-item">
-                        <span class="glyphicon" ng-class="{'glyphicon-check': todo.completed, 'glyphicon-unchecked': !todo.completed}" aria-hidden="true"></span>
-                        {{todo.title}}
+                <ul class="todo-list">
+                    <li ng-repeat="todo in todos">
+                        <div class="todo-item">
+                            <input type="checkbox" ng-change="toggleCompleted(todo)" ng-model="todo.completed">
+                            <span ng-class="{ 'completed': todo.completed }">{{todo.title}}</span>
+                            <a href="#" ng-click="deleteTodo(todo)" class="cross" aria-hidden="true" data-icon="&#xe0cf;"></a>
+                        </div>
                     </li>
                 </ul>
             </div>
