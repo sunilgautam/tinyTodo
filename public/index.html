@@ -9,12 +9,16 @@
 <body>
     <div class="container" ng-controller="TodoController">
         <div class="row">
-            <div class="col-xs-12" style="padding-top: 10px;">
-                <form ng-submit="addTodo(todoForm)" name="todoForm" class="form-inline" style="margin: 10px;" novalidate>
+            <div class="col-xs-12 col-md-8 col-md-offset-2" style="padding-top: 10px;">
+                <form ng-submit="addTodo(todoForm)" name="todoForm" style="margin: 10px;" novalidate>
                     <div class="form-group">
                         <input ng-model="title" type="text" name="title" class="form-control" required="">
+                        <div class="row" style="margin-top: 5px;">
+                            <div class="col-xs-12 col-md-6 col-md-offset-3">
+                                <button type="submit" class="btn btn-primary btn-block">Add</button>
+                            </div>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Add</button>
                     <!-- <div ng-show="todoForm.$submitted || todoForm.title.$touched">
                         <div ng-show="todoForm.title.$error.required" class="error">Enter title</div>
                     </div> -->
@@ -24,7 +28,7 @@
                         <div class="todo-item">
                             <input type="checkbox" ng-change="toggleCompleted(todo)" ng-model="todo.completed">
                             <span ng-class="{ 'completed': todo.completed }">{{todo.title}}</span>
-                            <a href="#" ng-click="deleteTodo(todo)" class="cross" aria-hidden="true" data-icon="&#xe0cf;"></a>
+                            <a href="#" ng-click="deleteTodo($event, todo)" class="cross" aria-hidden="true" data-icon="&#xe0cf;"></a>
                         </div>
                     </li>
                 </ul>

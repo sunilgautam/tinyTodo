@@ -41,8 +41,9 @@ ngApp.controller('TodoController', ['$scope', 'Todo', function($scope, Todo) {
         });
     };
 
-    $scope.deleteTodo = function(todo) {
-        todo.$update(function() {
+    $scope.deleteTodo = function(e, todo) {
+        e.preventDefault();
+        todo.$delete(function() {
             $scope.getTodos.call();
         });
     };
