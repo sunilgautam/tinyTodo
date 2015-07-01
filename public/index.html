@@ -25,11 +25,7 @@
                 </form>
                 <ul class="todo-list">
                     <li ng-repeat="todo in todos">
-                        <div class="todo-item">
-                            <input type="checkbox" ng-change="toggleCompleted(todo)" ng-model="todo.completed">
-                            <span ng-class="{ 'completed': todo.completed }">{{todo.title}}</span>
-                            <a href="#" ng-click="deleteTodo($event, todo)" class="cross" aria-hidden="true" data-icon="&#xe0cf;"></a>
-                        </div>
+                        <todo-item></todo-item>
                     </li>
                 </ul>
             </div>

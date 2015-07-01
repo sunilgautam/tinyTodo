@@ -30,5 +30,8 @@ npm-debug.log
 
 bower_components
 
+# Sass cache
+.sass-cache
+
 public/css
 public/js

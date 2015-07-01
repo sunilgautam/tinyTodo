@@ -5,6 +5,7 @@ var TodoSchema = new mongoose.Schema({
   completed: Boolean,
   note: String,
   updated_at: { type: Date, default: Date.now },
+  order: { type: Number, default: 0 }
 });
 
 module.exports = mongoose.model('Todo', TodoSchema);

@@ -40,11 +40,46 @@ $gray-dark: #787B82;
     .todo-item {
         position: relative;
 
-        &:hover {
-            background-color: lighten($gray-dark, 49%);
-
-            .cross {
+        &:hover, &:focus {
+            .cross, .todo-move {
                 display: block;
+            }
+        }
+
+        .todo-move {
+            position: absolute;
+            width: 24px;
+            top: 7px;
+            left: 0;
+            display: none;
+            cursor: move;
+        }
+
+        .todo-toggle {
+            position: absolute;
+            width: 24px;
+            top: 7px;
+            left: 24px;
+        }
+
+        .todo-title {
+            padding: 5px 45px 5px 53px;
+            outline: none;
+
+            &:hover, &:focus {
+                background-color: lighten($gray-dark, 49%);
+            }
+        }
+
+        .cross {
+            position: absolute;
+            right: 10px;
+            top: 7px;
+            display: none;
+            color: #FFCDD2;
+
+            &:hover {
+                color: #EF5350;
             }
         }
     }
@@ -93,15 +128,4 @@ $gray-dark: #787B82;
         color: $gray-dark;
     }
 
-    .cross {
-        position: absolute;
-        right: 10px;
-        top: 2px;
-        display: none;
-        color: #FFCDD2;
-
-        &:hover {
-            color: #EF5350;
-        }
-    }
 }

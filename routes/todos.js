@@ -7,7 +7,7 @@ var Todo = require('../models/Todo.js');
 
 // index
 router.get('/', function(req, res, next) {
-  Todo.find(function (err, todos) {
+  Todo.find({}, null, { sort: { order: 1, updated_at: 1 } }, function (err, todos) {
     if (err) return next(err);
     res.json(todos);
   });
@@ -15,9 +15,12 @@ router.get('/', function(req, res, next) {
 
 // store
 router.post('/', function(req, res, next) {
-  Todo.create(req.body, function(err, newTodo) {
-    if (err) return next(err);
-    res.json(newTodo);
+  Todo.find({}).count(function(err, count) {
+    req.body.order = count;
+    Todo.create(req.body, function(err, newTodo) {
+      if (err) return next(err);
+      res.json(newTodo);
+    });
   });
 });
 
