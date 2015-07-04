@@ -1266,10 +1266,15 @@ a:hover {
   margin: 0;
   padding: 0;
 }
+.todo-list .todo-list-empty {
+  color: #cdced1;
+  text-align: center;
+  font-size: 2em;
+}
 .todo-list .todo-item {
   position: relative;
 }
-.todo-list .todo-item:hover .cross, .todo-list .todo-item:hover .todo-move, .todo-list .todo-item:focus .cross, .todo-list .todo-item:focus .todo-move {
+.todo-list .todo-item:hover .cross, .todo-list .todo-item:focus .cross {
   display: block;
 }
 .todo-list .todo-item .todo-move {

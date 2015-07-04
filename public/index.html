@@ -24,6 +24,7 @@
                     </div> -->
                 </form>
                 <ul class="todo-list">
+                    <li class="todo-list-empty" ng-hide="todos.length">No todo</li>
                     <li ng-repeat="todo in todos">
                         <todo-item></todo-item>
                     </li>

@@ -37,11 +37,17 @@ $gray-dark: #787B82;
     margin: 0;
     padding: 0;
 
+    .todo-list-empty {
+        color: lighten($gray-dark, 32);
+        text-align: center;
+        font-size: 2em;
+    }
+
     .todo-item {
         position: relative;
 
         &:hover, &:focus {
-            .cross, .todo-move {
+            .cross {
                 display: block;
             }
         }

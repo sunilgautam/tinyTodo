@@ -8,4 +8,10 @@ var TodoSchema = new mongoose.Schema({
   order: { type: Number, default: 0 }
 });
 
-module.exports = mongoose.model('Todo', TodoSchema);
+var ConnectSchema = new mongoose.Schema({
+    connect_id: String,
+    created_at: { type: Date, default: Date.now },
+    todos: [TodoSchema]
+});
+
+module.exports = mongoose.model('Connect', ConnectSchema);
