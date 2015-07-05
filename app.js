@@ -4,12 +4,19 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-require('dotenv').load();
 
 var todos = require('./routes/todos');
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://' + process.env.DB_HOST + '/' + process.env.DB_NAME, function(err) {
+
+var dbConnectionString;
+if (process.env.NODE_ENV && process.env.NODE_ENV == 'production') {
+  dbConnectionString = 'mongodb://' + process.env.DB_HOST + '/' + process.env.DB_NAME;
+} else {
+  dbConnectionString = 'mongodb://localhost/tinyTodo';
+}
+
+mongoose.connect(dbConnectionString, function(err) {
   if(err) {
     console.log('connection error', err);
   } else {
