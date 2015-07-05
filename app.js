@@ -4,11 +4,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+require('dotenv').load();
 
 var todos = require('./routes/todos');
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/tinyTodo', function(err) {
+mongoose.connect('mongodb://' + process.env.DB_HOST + '/' + process.env.DB_NAME, function(err) {
   if(err) {
     console.log('connection error', err);
   } else {
